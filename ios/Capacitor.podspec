@@ -17,9 +17,11 @@ Pod::Spec.new do |s|
   s.authors = { 'Ionic Team' => 'hi@ionicframework.com' }
   s.source = { git: 'https://github.com/ionic-team/capacitor.git', tag: package['version'] }
   s.source_files = "#{prefix}Capacitor/Capacitor/*.{swift,h,m}", "#{prefix}Capacitor/Capacitor/Plugins/*.{swift,h,m}",
-                   "#{prefix}Capacitor/Capacitor/Plugins/**/*.{swift,h,m}"
+                   "#{prefix}Capacitor/Capacitor/Plugins/**/*.{swift,h,m}",
+                   "#{prefix}Capacitor/Capacitor/Custom/*.{swift,h,m}"
   s.module_map = "#{prefix}Capacitor/Capacitor/Capacitor.modulemap"
   s.resources = ["#{prefix}Capacitor/Capacitor/assets/native-bridge.js"]
   s.dependency 'CapacitorCordova'
+  s.dependency 'ZIPFoundation', '~> 0.9'
   s.swift_version = '5.1'
 end
