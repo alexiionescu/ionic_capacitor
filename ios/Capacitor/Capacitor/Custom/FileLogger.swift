@@ -63,11 +63,11 @@ public class FileLogger {
                         }
                     }
                 }
-#if canImport(UIKit)
+                #if canImport(UIKit)
                 let deviceName = UIDevice.current.name
-#else
+                #else
                 let deviceName = Host.current().localizedName ?? "mac"
-#endif
+                #endif
                 let baseFileName = "\(deviceName)-\(RFC3339DateFormatter.string(from: Date()))"
                 let logFilePath = docsDir.appendingPathComponent(baseFileName).appendingPathExtension("\(subsystem).log").path
                 if !fm.fileExists(atPath: logFilePath) {
@@ -89,7 +89,7 @@ public class FileLogger {
         }
         RFC3339DateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
     }
-    
+       
     private func writeLogLine(_ level: String, message: String) {
         let threadId = Thread.current.isMainThread ? 0 : 1
         if let timestamp = (RFC3339DateFormatter.string(from: Date()) as NSString).utf8String,
@@ -108,9 +108,9 @@ public class FileLogger {
     
     public func debug(_ message: String) {
         log?.debug("\(message)")
-#if DEBUG
+        #if DEBUG
         writeLogLine("DEBUG", message: message)
-#endif
+        #endif
     }
     
     public func info(_ message: String) {
