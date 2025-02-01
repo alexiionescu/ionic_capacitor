@@ -107,39 +107,51 @@ public class FileLogger {
     }
     
     public func debug(_ message: String) {
-        log?.debug("\(message)")
         #if DEBUG
+        log?.debug("\(message)")
         writeLogLine("DEBUG", message: message)
         #endif
     }
     
     public func info(_ message: String) {
+#if DEBUG
         log?.info("\(message)")
+#endif
         writeLogLine("INFO", message: message)
     }
     
     public func notice(_ message: String) {
+#if DEBUG
         log?.notice("\(message)")
+#endif
         writeLogLine("NOTE", message: message)
     }
     
     public func warning(_ message: String) {
+#if DEBUG
         log?.warning("\(message)")
+#endif
         writeLogLine("WARN", message: message)
     }
     
     public func error(_ message: String) {
+#if DEBUG
         log?.error("\(message)")
+#endif
         writeLogLine("ERROR", message: message)
     }
     
     public func critical(_ message: String) {
+#if DEBUG
         log?.critical("\(message)")
+#endif
         writeLogLine("CRIT", message: message)
     }
     
     public func fault(_ message: String) {
+#if DEBUG
         log?.fault("\(message)")
+#endif
         writeLogLine("FAULT", message: message)
     }
 }
